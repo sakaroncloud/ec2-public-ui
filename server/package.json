@@ -1,0 +1,14 @@
+{
+  "name": "backend-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private API for Hybrid Cloud Gateway",
+  "main": "server.cjs",
+  "scripts": {
+    "start": "node server.cjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
