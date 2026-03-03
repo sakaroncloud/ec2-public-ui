@@ -13,6 +13,7 @@ export default defineConfig({
         secure: false,
       },
     },
+  },
   preview: {
     port: 80,
   },
