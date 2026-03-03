@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Hybrid Cloud Gateway: Public Frontend ↔ Private API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates a secure hybrid cloud architecture. It consists of a **React + Vite** frontend (simulated for a Public Subnet) and an **Express.js** backend (simulated for a Private Subnet).
 
-Currently, two official plugins are available:
+## 🏗️ Architecture Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend (Public Subnet):** A React application that handles user interaction and communicates with the backend via a reverse proxy.
+- **Backend (Private Subnet):** A Node.js API that serves restricted data, provides health status, and echoes communication.
+- **The Bridge:** The Vite development server is configured to proxy requests from `/api` to the backend on port `3001`, simulating a VPC/Gateway configuration where the backend isn't directly exposed to the internet.
 
-## React Compiler
+## 🚀 Getting Started
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### 1. Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js (v18+)
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Setup Backend (Private API)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd server
+npm install
+npm start
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+_The server will run on [http://localhost:3001](http://localhost:3001)._
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 3. Setup Frontend (Public UI)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+In a new terminal:
+
+```bash
+# Return to root directory
+npm install
+npm run dev
 ```
+
+_The UI will run on [http://localhost:5173](http://localhost:5173)._
+
+## 📡 API Endpoints (Private Network)
+
+| Method | Endpoint      | Description                                      |
+| :----- | :------------ | :----------------------------------------------- |
+| `GET`  | `/api/data`   | Fetches simulated secure data.                   |
+| `GET`  | `/api/status` | Returns server health, uptime, and node version. |
+| `POST` | `/api/echo`   | Reflects back the user input.                    |
+
+## 📁 Project Structure
+
+```text
+├── server/             # Express.js Backend (Private Subnet)
+│   ├── package.json
+│   └── server.cjs
+├── src/                # React Frontend (Public Subnet)
+│   ├── components/     # UI Components (StatusCard, DataSection, etc.)
+│   ├── App.tsx         # Main Logic & API Orchestration
+│   └── main.tsx
+├── vite.config.ts      # Proxy configuration
+└── package.json        # Frontend dependencies
+```
+
+## 🛠️ Built With
+
+- **Frontend:** React 19, TypeScript, Vite, Vanilla CSS.
+- **Backend:** Node.js, Express, CORS.
+- **Linting:** ESLint with TypeScript and React rules.
+
+## 📜 License
+
+MIT
