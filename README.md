@@ -37,6 +37,15 @@ npm run dev
 
 _*The UI will run on [http://localhost](http://localhost).* (Port 80)_
 
+#### Preview Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+_Also runs on [http://localhost](http://localhost) (Port 80)._
+
 ## 📡 API Endpoints (Private Network)
 
 | Method | Endpoint      | Description                                      |
