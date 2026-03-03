@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-_The server will run on [http://localhost:3001](http://localhost:3001)._
+_The server will run on [http://10.0.1.181:3001](http://10.0.1.181:3001)._
 
 ### 3. Setup Frontend (Public UI)
 
