@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-_The UI will run on [http://localhost:5173](http://localhost:5173)._
+_*The UI will run on [http://localhost](http://localhost).* (Port 80)_
 
 ## 📡 API Endpoints (Private Network)
 
