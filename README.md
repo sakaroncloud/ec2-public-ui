@@ -23,7 +23,7 @@ npm install
 npm start
 ```
 
-_The server will run on [http://10.0.1.181:3001](http://10.0.1.181:3001)._
+_The server will run on [http://localhost:3001](http://localhost:3001)._
 
 ### 3. Setup Frontend (Public UI)
 
@@ -35,16 +35,7 @@ npm install
 npm run dev
 ```
 
-_*The UI will run on [http://localhost](http://localhost).* (Port 80)_
-
-#### Preview Production Build
-
-```bash
-npm run build
-npm run preview
-```
-
-_Also runs on [http://localhost](http://localhost) (Port 80)._
+_The UI will run on [http://localhost:5173](http://localhost:5173)._
 
 ## 📡 API Endpoints (Private Network)
 
